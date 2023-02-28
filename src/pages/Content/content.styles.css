@@ -1,0 +1,80 @@
+.cot-dialog {
+    position: fixed;
+    height: 400px;
+    width: 300px;
+    border: 1px solid rgba(61,60,64,0.16);
+    border-radius: 2px;
+    background: #ffffff;
+    display: block;
+    z-index: 9999;
+}
+
+.cot-dialog-wrapper {
+    height: 400px;
+    display: block;
+    position: relative;
+    padding: 10px;
+}
+
+.cot-dialog .cot-dialog-header {
+    position: relative;
+    display: flex;
+}
+
+.cot-dialog input {
+    padding: 2px 10px;
+    border-radius: 15px;
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(61,60,64,0.16);
+}
+
+.cot-dialog-tabs {
+    display: flex;
+    gap: 5px;
+    margin: 0 0 10px 0;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.cot-dialog-tabs button {
+    border-radius: 15px;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.cot-dialog-tabs button:hover {
+    background-color: gray;
+}
+
+.cot-dialog-tabs button.active {
+    background-color: darkgray;
+}
+
+.cot-dialog-list {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    padding: 15px 0;
+    height: 330px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.cot-dialog-list img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+.cot-dialog-list img:hover {
+    box-shadow: 0 0 2px 2px gray;
+}
+
+.markdown-inline-img {
+    max-width: 130px;
+}

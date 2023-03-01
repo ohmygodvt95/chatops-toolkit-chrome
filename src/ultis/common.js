@@ -1,5 +1,16 @@
-export const generateImageListByTab = (name) => {
-  const stickers = JSON.parse(localStorage.getItem('COT_STICKER_LIST')) ?? [];
+export const generateImageListByTab = (name = null) => {
+  let key = 'COT_STICKER_LIST';
+  if (name === null) {
+    key = 'COT_STICKER_RECENT';
+    const stickers = JSON.parse(localStorage.getItem(key)) ?? [];
+    let stickerList = '';
+    for (const image of stickers) {
+      stickerList += `<img src="${image.src}" alt="${image.key}" />`;
+    }
+
+    return stickerList;
+  }
+  const stickers = JSON.parse(localStorage.getItem(key)) ?? [];
   const selectedSticker = stickers.find((item) => item.name === name);
 
   let stickerList = '';
@@ -16,14 +27,14 @@ export const initDataSource = async () => {
       stickerDataSource: [
         {
           name: 'Default',
-          version: '2019030401',
-          src: 'https://dl.dropboxusercontent.com/s/lmxis68cfh4v1ho/default.json?dl=1',
+          version: '2023030111',
+          src: 'https://dl.dropboxusercontent.com/s/1mjo82an1fi6dlg/default.json?dl=1',
           type: 'default',
         },
         {
           name: 'Vietnamese',
-          version: '2019080701',
-          src: 'https://dl.dropboxusercontent.com/s/2b085bilbno4ri1/vietnamese.json?dl=1',
+          version: '2023030112',
+          src: 'https://dl.dropboxusercontent.com/s/djvsqx24io4glz5/vietnamese.json?dl=1',
           type: 'default',
         },
       ],

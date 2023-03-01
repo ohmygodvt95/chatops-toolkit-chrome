@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { initStickerPlugin } from './modules/print'
+import { initStickerPluginPostBox, initStickerDialog, initStickerPluginReplyBox } from './modules/print'
 import {
   generateImageListByTab,
   textareaUpdateContent,
@@ -7,7 +7,8 @@ import {
 import {
   DIALOG_SELECTOR,
   MAIN_TEXTAREA_SELECTOR,
-  STICKER_IMG_SELECTOR,
+  REPLY_TEXTAREA_SELECTOR,
+  STICKER_IMG_SELECTOR, STICKER_TAB_RECENT_SELECTOR,
   STICKER_TAB_SELECTOR,
 } from '../../ultis/contants'
 
@@ -23,24 +24,50 @@ import {
 })();
 
 setInterval(async () => {
-  if ($('.post-body__actions').length) {
-    if ($('.post-body__actions .icon--sticker').length === 0) {
-      initStickerPlugin();
+  if ($('.post-create__container .post-body__actions').length) {
+    if ($('.post-create__container .post-body__actions .icon--sticker').length === 0) {
+      initStickerPluginPostBox();
     }
-  } else {
-    console.info('Waiting for page load...')
+  }
+}, 1000);
+
+setInterval(async () => {
+  if ($('.sidebar--right .post-body__actions').length) {
+    if ($('.sidebar--right .post-body__actions .icon--sticker').length === 0) {
+      initStickerPluginReplyBox();
+    }
+  }
+}, 1000);
+
+setInterval(async () => {
+  if ($('.cot-dialog').length === 0) {
+    initStickerDialog();
   }
 }, 1000);
 
 
 
-$(document).on('click', STICKER_IMG_SELECTOR, function (e) {
-  const cursorPosition  = $(MAIN_TEXTAREA_SELECTOR).prop('selectionStart');
+$(document).on('click', STICKER_IMG_SELECTOR, function () {
+  const dialogElement = $(this).closest('.cot-dialog');
+  let textareaSelector = MAIN_TEXTAREA_SELECTOR;
+  if (dialogElement.hasClass('cot-sidebar-trigger')) {
+    textareaSelector = REPLY_TEXTAREA_SELECTOR;
+  }
+  const cursorPosition  = $(textareaSelector).prop('selectionStart');
   const src = $(this).attr('src');
-  let input = $(MAIN_TEXTAREA_SELECTOR).val();
+  const key = $(this).attr('alt');
+  let input = $(textareaSelector).val();
   const updateContent = input.substring(0, cursorPosition) + `![](${src})`  +  input.substring(cursorPosition);
-  textareaUpdateContent(MAIN_TEXTAREA_SELECTOR, updateContent);
+  textareaUpdateContent(textareaSelector, updateContent);
   $(DIALOG_SELECTOR).hide();
+
+  let recent = JSON.parse(localStorage.getItem('COT_STICKER_RECENT')) ?? [];
+  recent.filter(i => i.src !== src);
+  recent.unshift({
+    src: src,
+    key: key,
+  })
+  localStorage.setItem('COT_STICKER_RECENT', JSON.stringify(recent.splice(0, 15)));
 })
 
 $(document).on('click', STICKER_TAB_SELECTOR, function () {
@@ -48,6 +75,16 @@ $(document).on('click', STICKER_TAB_SELECTOR, function () {
 
   $('.cot-dialog-list').html(generateImageListByTab(name));
 
-  $(STICKER_TAB_SELECTOR).removeClass('active')
+  $(STICKER_TAB_SELECTOR).removeClass('active');
+  $(STICKER_TAB_RECENT_SELECTOR).removeClass('active');
   $(this).addClass('active')
 })
+
+$(document).on('click', STICKER_TAB_RECENT_SELECTOR, function () {
+
+  $('.cot-dialog-list').html(generateImageListByTab(null));
+
+  $(STICKER_TAB_SELECTOR).removeClass('active');
+  $(this).addClass('active')
+})
+

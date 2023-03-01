@@ -1,6 +1,9 @@
-export const ACTION_BAR_SELECTOR = '.post-body__actions';
+export const ACTION_BAR_SELECTOR = '.post-create__container .post-create .post-body__actions';
+export const ACTION_BAR_REPLY_SELECTOR = '.sidebar--right .comment-create-body .post-body__actions';
 export const STICKER_SELECTOR = '.post-body__actions .icon--sticker';
 export const DIALOG_SELECTOR = '.cot-dialog';
 export const STICKER_IMG_SELECTOR = '.cot-dialog-list img';
-export const STICKER_TAB_SELECTOR = '.cot-dialog-tabs button';
+export const STICKER_TAB_SELECTOR = '.cot-dialog-tabs button[data-version]';
+export const STICKER_TAB_RECENT_SELECTOR = '.cot-dialog-tabs button[data-recent]';
 export const MAIN_TEXTAREA_SELECTOR = '#post_textbox';
+export const REPLY_TEXTAREA_SELECTOR = '#reply_textbox';

@@ -34,7 +34,8 @@
     gap: 5px;
     margin: 0 0 10px 0;
     overflow-x: auto;
-    width: 100%;
+    min-width: 100%;
+    padding: 0 0 10px 0;
 }
 
 .cot-dialog-tabs button {
@@ -43,6 +44,8 @@
     padding: 5px 10px;
     cursor: pointer;
     transition: 0.25s;
+    color: #000;
+    white-space: nowrap;
 }
 
 .cot-dialog-tabs button:hover {
@@ -58,7 +61,7 @@
     gap: 5px;
     flex-wrap: wrap;
     padding: 15px 0;
-    height: 330px;
+    height: 320px;
     overflow-y: auto;
     overflow-x: hidden;
 }

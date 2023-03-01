@@ -2,7 +2,7 @@ import { generateImageListByTab } from '../../../ultis/common'
 
 export const dialogHTML = () => {
   const stickers = JSON.parse(localStorage.getItem('COT_STICKER_LIST')) ?? [];
-  let tabs =  '<button data-recent="recent">' +
+  let tabs =  '<button data-recent="recent" title="Recent stickers">' +
     '<?xml version="1.0" encoding="utf-8"?>' +
     '<svg width="16px" height="16px" viewBox="0 0 24 24" id="_24x24_On_Light_Recent" data-name="24x24/On Light/Recent" xmlns="http://www.w3.org/2000/svg">' +
     '  <rect id="view-box" width="24" height="24" fill="none"/>' +
@@ -11,14 +11,14 @@ export const dialogHTML = () => {
 
 
   for (const sticker of stickers) {
-    tabs += `<button data-version="${sticker.version}">${sticker.name}</button>`;
+    tabs += `<button data-version="${sticker.version}" title="${sticker.name}">${sticker.name}</button>`;
   }
 
   return `
 <div class="cot-dialog">
   <div class="cot-dialog-wrapper">
-    <div class="cot-dialog-header" style="display: none">
-      <input type="text" placeholder="Search">
+    <div class="cot-dialog-header">
+      <input type="text" placeholder="Search" style="display: none;">
     </div>
     <div class="cot-dialog-body">
       <div class="cot-dialog-tabs">

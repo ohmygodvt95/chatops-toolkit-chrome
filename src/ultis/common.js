@@ -37,6 +37,12 @@ export const initDataSource = async () => {
           src: 'https://dl.dropboxusercontent.com/s/djvsqx24io4glz5/vietnamese.json?dl=1',
           type: 'default',
         },
+        {
+          name: 'Ami Fatcat',
+          version: '2023030114',
+          src: 'https://dl.dropboxusercontent.com/s/us4xu7d23ddwpmx/amifatcat.json?dl=1',
+          type: 'default',
+        },
       ],
     },
     function(item) {

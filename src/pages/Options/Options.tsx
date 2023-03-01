@@ -39,7 +39,7 @@ const Options: React.FC<Props> = ({ title }: Props) => {
           }
 
           let newData = {
-            name: data.data_name + '1',
+            name: data.data_name,
             version: data.data_version,
             src: newCollectionUrl,
             type: 'customize',

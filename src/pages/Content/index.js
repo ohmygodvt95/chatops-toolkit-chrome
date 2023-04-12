@@ -5,6 +5,7 @@ import {
   textareaUpdateContent,
 } from '../../ultis/common'
 import {
+  ACTION_BAR_REPLY_SELECTOR, ACTION_BAR_SELECTOR,
   DIALOG_SELECTOR,
   MAIN_TEXTAREA_SELECTOR,
   REPLY_TEXTAREA_SELECTOR,
@@ -24,16 +25,16 @@ import {
 })();
 
 setInterval(async () => {
-  if ($('.post-create__container .post-body__actions').length) {
-    if ($('.post-create__container .post-body__actions .icon--sticker').length === 0) {
+  if ($(ACTION_BAR_SELECTOR).length) {
+    if ($(ACTION_BAR_SELECTOR + ' .icon--sticker').length === 0) {
       initStickerPluginPostBox();
     }
   }
 }, 1000);
 
 setInterval(async () => {
-  if ($('.sidebar--right .post-body__actions').length) {
-    if ($('.sidebar--right .post-body__actions .icon--sticker').length === 0) {
+  if ($(ACTION_BAR_REPLY_SELECTOR).length) {
+    if ($(ACTION_BAR_REPLY_SELECTOR + ' .icon--sticker').length === 0) {
       initStickerPluginReplyBox();
     }
   }

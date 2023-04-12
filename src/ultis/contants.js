@@ -1,6 +1,6 @@
-export const ACTION_BAR_SELECTOR = '.post-create__container .post-create .post-body__actions';
-export const ACTION_BAR_REPLY_SELECTOR = '.sidebar--right .comment-create-body .post-body__actions';
-export const STICKER_SELECTOR = '.post-body__actions .icon--sticker';
+export const ACTION_BAR_SELECTOR = '.AdvancedTextEditor .AdvancedTextEditor__body > div > div[open]';
+export const ACTION_BAR_REPLY_SELECTOR = '.sidebar-right__body .AdvancedTextEditor .AdvancedTextEditor__body > div > div[open]';
+export const STICKER_SELECTOR = '.AdvancedTextEditor .AdvancedTextEditor__body > div > div[open] .icon--sticker';
 export const DIALOG_SELECTOR = '.cot-dialog';
 export const STICKER_IMG_SELECTOR = '.cot-dialog-list img';
 export const STICKER_TAB_SELECTOR = '.cot-dialog-tabs button[data-version]';

@@ -33,9 +33,12 @@ export const dialogHTML = () => {
 `;
 }
 
-export const stickerHTML = `
-<button type="button" class="style--none post-action icon icon--attachment icon--sticker" title="Sticker & GIFs">
-  <i class="fa fa-sticky-note" style="font-size: 16px"></i>
-</button>
-`;
+export const stickerHTML = () => {
+  const elm = document.querySelector('#emojiPickerButton');
+  return `
+  <button type="button" class="icon--sticker ${elm.className}" title="Sticker & GIFs">
+    <i class="fa fa-sticky-note" style="font-size: 16px"></i>
+  </button>
+  `;
+}
 

@@ -12,7 +12,7 @@ var webpack = require('webpack'),
 delete config.chromeExtensionBoilerplate;
 
 config.mode = 'production';
-console.log(config.mode)
+
 var packageInfo = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 console.log(path.join(__dirname, '../', 'zip'))
 config.plugins = (config.plugins || []).concat(

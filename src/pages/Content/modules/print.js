@@ -21,11 +21,11 @@ const getOffset = (el) =>  {
 let mouseIsInside = false;
 
 export const initStickerPluginPostBox = () => {
-  $(ACTION_BAR_SELECTOR).prepend($(stickerHTML));
+  $(ACTION_BAR_SELECTOR).append($(stickerHTML()));
 };
 
 export const initStickerPluginReplyBox = () => {
-  $(ACTION_BAR_REPLY_SELECTOR).prepend($(stickerHTML));
+  $(ACTION_BAR_REPLY_SELECTOR).append($(stickerHTML()));
 };
 
 export const initStickerDialog = () => {
